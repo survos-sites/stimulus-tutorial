@@ -26,6 +26,22 @@
                     </a>
 
                     <ul class="navbar-nav">
+                        <li>
+                            <twig:PwaInstall>
+                                <twig:block name="launch">
+                                    <button class="btn btn-outline-success">
+                                        Lauch button here...
+                                    </button>
+                                </twig:block>
+                                <twig:block name="install">
+                                    <button class="btn btn-success">
+                                        Install as PWA
+                                    </button>
+                                </twig:block>
+                            </twig:PwaInstall>
+
+                            online/install button
+                        </li>
                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('app_logout') }}">

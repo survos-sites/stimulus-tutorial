@@ -9,20 +9,6 @@
 
             <div class="col-xs-12 col-9">
 
-                <div data-controller="counter">
-                    <button
-                        data-action="counter#increment"
-                        class="btn btn-primary btn-sm"
-                    >
-                        Click me!
-                    </button>
-
-                    <br>
-
-                    I have been clicked
-                    <span data-counter-target="count">0</span>
-                    times!
-                </div>
 
                 <div class="row">
                     <div class="col-3">
@@ -104,6 +90,20 @@
                         Shipping takes 10-13 weeks, and products probably won't work
                     </span>
                 </div>
+                <div data-controller="counter">
+                    <button
+                            data-action="counter#increment"
+                            class="btn btn-primary btn-sm"
+                    >
+                        Click me!
+                    </button>
+                    <br>
+
+                    I have been clicked
+                    <span data-counter-target="count">0</span>
+                    times!
+                </div>
+
             </div>
         </div>
     </div>

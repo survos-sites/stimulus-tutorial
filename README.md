@@ -9,6 +9,7 @@ for the [Symfony UX: Stimulus.js](https://symfonycasts.com/screencast/stimulus) 
 * Replace WebpackEncore with AssetMapper
 * Drop React (not compatible with AssetMapper)
 * PostgreSQL (not MySQL)
+* Click Me moved to the bottom of the page
 * @todo: drop jQuery
 
 
