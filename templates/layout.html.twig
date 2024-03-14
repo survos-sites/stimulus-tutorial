@@ -53,8 +53,13 @@
                 </nav>
             </header>
 
-            {% for flash in app.session.flashBag.get('success') %}
+            {% for flash in app.flashes('success') %}
                 <div class="alert alert-success">
+                    {{ flash }}
+                </div>
+            {% endfor %}
+            {% for flash in app.flashes %}
+                <div class="alert alert-danger">
                     {{ flash }}
                 </div>
             {% endfor %}

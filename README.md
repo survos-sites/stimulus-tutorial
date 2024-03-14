@@ -1,7 +1,13 @@
-# Symfony UX: Stimulus.js
+# Symfony UX: Stimulus.js (Symfony 7)
 
 Well hi there! This repository holds the code and script
-for the [Symfony UX: Stimulus.js](https://symfonycasts.com/screencast/stimulus) course on SymfonyCasts.
+for the [Symfony UX: Stimulus.js](https://symfonycasts.com/screencast/stimulus) course on SymfonyCasts.  It has been updated with the following:
+
+* Update all libraries: Symfony 7, latest Bootstrap, etc.
+* Replace WebpackEncore with AssetMapper
+* Drop React (not compatible with AssetMapper)
+* @todo: drop jQuery
+
 
 ## Setup
 
@@ -80,28 +86,11 @@ project, and run:
 
 ```
 symfony serve -d
+symfony open:local
 ```
 
 (If this is your first time using this command, you may see an
 error that you need to run `symfony server:ca:install` first).
-
-Now check out the site at `https://localhost:8000`. But don't
-forget about the next step - setting up the Frontend assets!
-
-**5) Frontend Assets**
-
-The frontend is built with Encore. First download the node packages
-via yarn:
-
-```
-yarn install
-```
-
-Then use Encore to build the assets with:
-
-```
-yarn watch
-```
 
 ## Have Ideas, Feedback or an Issue?
 

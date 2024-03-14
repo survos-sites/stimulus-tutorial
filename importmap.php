@@ -44,4 +44,7 @@ return [
     'stimulus-use' => [
         'version' => '0.52.2',
     ],
+    'sweetalert2' => [
+        'version' => '11.10.6',
+    ],
 ];
