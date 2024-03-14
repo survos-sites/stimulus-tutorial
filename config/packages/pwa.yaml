@@ -1,0 +1,102 @@
+pwa:
+    image_processor: 'pwa.image_processor.imagick'
+    manifest:
+        enabled: true
+        background_color: "#c026d3"
+        theme_color: "#c026d3"
+        name: 'MVP Office Supplies'
+        short_name: 'mvp-office'
+        description: 'SymfonyCast Stimulus Tutorial as a PWA '
+        orientation: "any"
+        display: "standalone"
+        scope: "/"
+        display_override: ['fullscreen', 'minimal-ui', 'window-controls-overlay']
+        id: "/"
+        start_url: "/"
+#        icons:
+#            # https://www.veryicon.com/icons/miscellaneous/smart-site/noise-3.html
+#            - src: "/images/mvp-logo-light.png"
+#              sizes: [32, 48, 72, 96, 120, 128, 144, 180, 192, 256, 384, 512]
+##            - src: "images/space-planet-icon.svg"
+##              sizes: any
+        icons:
+          -
+            src: icons/icon-16x16.png
+            sizes:
+              - 16
+            type: image/png
+          -
+            src: icons/icon-32x32.png
+            sizes:
+              - 32
+            type: image/png
+          -
+            src: icons/icon-48x48.png
+            sizes:
+              - 48
+            type: image/png
+          -
+            src: icons/icon-96x96.png
+            sizes:
+              - 96
+            type: image/png
+          -
+            src: icons/icon-144x144.png
+            sizes:
+              - 144
+            type: image/png
+          -
+            src: icons/icon-180x180.png
+            sizes:
+              - 180
+            type: image/png
+          -
+            src: icons/icon-256x256.png
+            sizes:
+              - 256
+            type: image/png
+          -
+            src: icons/icon-512x512.png
+            sizes:
+              - 512
+            type: image/png
+          -
+            src: icons/icon-1024x1024.png
+            sizes:
+              - 1024
+            type: image/png
+
+
+        screenshots:
+              - src: screenshots/screenshot-1200x1100.png
+                width: 1200
+                height: 1100
+                format: image/png
+
+        categories: []
+        shortcuts: []
+        edge_side_panel:
+            preferred_width: 280
+        widgets: []
+    serviceworker:
+        enabled: true
+        src: "sw.js"
+        skip_waiting: true
+        workbox:
+            page_caches:
+                - regex: '\/pages\/.*$'
+                  cache_name: 'static-pages'
+                  strategy: 'cacheFirst'
+                    #                  network_timeout: 2 # Wait only 2 seconds (only when strategy = networkFirst
+                  urls: # List of URLs to precache. The URL shall be comprised within the regex
+#                      - 'app_terms_of_service'
+#                      - 'app_about'
+                - regex: '\/articles\/.*$'
+                  cache_name: 'articles'
+                  strategy: 'staleWhileRevalidate'
+                  broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
+                  urls: # List of URLs to precache. The URL shall be comprised within the regex
+#                      - 'app_articles'
+#                    - 'app_about'
+#            offline_fallback:
+#                page: 'app_offline_page'

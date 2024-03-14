@@ -1,12 +1,13 @@
 {
     "type": "project",
     "license": "proprietary",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-imagick": "*",
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.11",
         "doctrine/doctrine-fixtures-bundle": "*",
@@ -14,12 +15,15 @@
         "doctrine/orm": "^3.1",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.26",
+        "spomky-labs/pwa-bundle": "1.1.x",
+        "survos/pwa-extra-bundle": "^1.5",
         "symfony/asset": "7.0.*",
         "symfony/asset-mapper": "7.0.*",
         "symfony/console": "7.0.*",
         "symfony/doctrine-messenger": "7.0.*",
         "symfony/dotenv": "7.0.*",
         "symfony/expression-language": "7.0.*",
+        "symfony/filesystem": "7.0.*",
         "symfony/flex": "^2",
         "symfony/form": "7.0.*",
         "symfony/framework-bundle": "7.0.*",
@@ -29,6 +33,7 @@
         "symfony/mime": "7.0.*",
         "symfony/monolog-bundle": "^3.0",
         "symfony/notifier": "7.0.*",
+        "symfony/panther": "^2.1",
         "symfony/process": "7.0.*",
         "symfony/property-access": "7.0.*",
         "symfony/property-info": "7.0.*",
@@ -95,11 +100,14 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "7.0.*"
+            "require": "7.0.*",
+            "docker": true
         }
     },
     "require-dev": {
+        "dbrekelmans/bdi": "^1.3",
         "phpunit/phpunit": "^9.5",
+        "survos/deployment-bundle": "^1.5",
         "symfony/browser-kit": "7.0.*",
         "symfony/css-selector": "7.0.*",
         "symfony/debug-bundle": "7.0.*",
