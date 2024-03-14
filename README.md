@@ -1,4 +1,6 @@
-# Symfony UX: Stimulus.js (Symfony 7)
+# Stimulus Tutorial (updated)
+
+### Symfony UX: Stimulus.js 
 
 Well hi there! This repository holds the code and script
 for the [Symfony UX: Stimulus.js](https://symfonycasts.com/screencast/stimulus) course on SymfonyCasts.  It has been updated with the following:
@@ -6,6 +8,7 @@ for the [Symfony UX: Stimulus.js](https://symfonycasts.com/screencast/stimulus) 
 * Update all libraries: Symfony 7, latest Bootstrap, etc.
 * Replace WebpackEncore with AssetMapper
 * Drop React (not compatible with AssetMapper)
+* PostgreSQL (not MySQL)
 * @todo: drop jQuery
 
 
