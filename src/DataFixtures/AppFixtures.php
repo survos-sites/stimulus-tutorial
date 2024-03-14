@@ -74,11 +74,11 @@ class AppFixtures extends Fixture
             $manager->persist($product);
         }
 
-        $fs = new Filesystem();
-        $target = __DIR__.'/../../public/uploads';
-        $fs->remove($target);
-        $fs->mirror(__DIR__.'/uploads', $target);
-        $fs->chmod($target, 0777);
+//        $fs = new Filesystem();
+//        $target = __DIR__.'/../../public/uploads';
+//        $fs->remove($target);
+//        $fs->mirror(__DIR__.'/uploads', $target);
+//        $fs->chmod($target, 0777);
 
         $user = new User();
         $user->setEmail('shopper@example.com');

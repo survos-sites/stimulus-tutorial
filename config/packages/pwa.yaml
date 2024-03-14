@@ -84,15 +84,15 @@ pwa:
         skip_waiting: true
         workbox:
             page_caches:
-                - regex: '\/pages\/.*$'
+                - regex: '\/login|register\/.*$'
                   cache_name: 'static-pages'
                   strategy: 'cacheFirst'
                     #                  network_timeout: 2 # Wait only 2 seconds (only when strategy = networkFirst
                   urls: # List of URLs to precache. The URL shall be comprised within the regex
-#                      - 'app_terms_of_service'
-#                      - 'app_about'
-                - regex: '\/articles\/.*$'
-                  cache_name: 'articles'
+                      - 'app_login'
+                      - 'app_register'
+                - regex: '\/product|category\/.*$'
+                  cache_name: 'products_and_categories'
                   strategy: 'staleWhileRevalidate'
                   broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
                   urls: # List of URLs to precache. The URL shall be comprised within the regex

@@ -13,6 +13,19 @@ for the [Symfony UX: Stimulus.js](https://symfonycasts.com/screencast/stimulus) 
 * @todo: drop jQuery
 
 
+## Quick Install (using sqlite)
+
+```bash
+git clone git@github.com:survos-sites/stimulus-tutorial.git && cd stimulus-tutorial 
+echo "DATABASE_URL=sqlite:///%kernel.project_dir%/var/data.db" > .env.local
+composer install 
+bin/console doctrine:database:create && bin/console doctrine:schema:update --force --complete
+bin/console doctrine:fixtures:load -n
+symfony server:start -d
+symfony open:local
+```
+
+
 ## Setup
 
 If you've just downloaded the code, congratulations!!
