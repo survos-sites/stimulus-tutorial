@@ -70,7 +70,9 @@
                                     <p class="p-0 d-inline">
                                         <strong>{{ product.priceString|format_currency('USD') }}</strong>
                                     </p>
+                                    <i>{{ product.stockQuantity }} in stock</i>
                                     <a href="{{ path('app_product', { id: product.id }) }}" class="btn btn-info">View Product</a>
+                                    <a href="{{ path('app_product_buy', { buyNow: true, id: product.id }) }}" class="btn btn-primary">Buy Now</a>
                                 </div>
                             </div>
                             <hr>

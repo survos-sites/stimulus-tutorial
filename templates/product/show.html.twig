@@ -24,6 +24,9 @@
                             <small>brought to you by </small>
                             <small class="d-inline">{{ product.brand }}</small>
                         </div>
+                        <i>{{ product.stockQuantity }} in stock</i>
+                        <a href="{{ path('app_product_buy', { buyNow: true, id: product.id }) }}" class="btn btn-primary">Buy Now</a>
+
                     </div>
                     <div class="col-8 p-3">
                         <div>

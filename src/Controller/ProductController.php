@@ -7,8 +7,10 @@ use App\Entity\Product;
 use App\Form\AddItemToCartFormType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -39,8 +41,21 @@ class ProductController extends AbstractController
     }
 
     #[Route(path: '/product/{id}', name: 'app_product', methods: ['GET'])]
-    public function showProduct(Product $product, CategoryRepository $categoryRepository): Response
+    public function showProduct(Request $request, Product $product, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager,
+    #[MapQueryParameter] bool $buyNow=false
+    ): Response
     {
+        if ($buyNow) {
+            $product->setStockQuantity($product->getStockQuantity()-1);
+            $entityManager->flush();
+            if ($referrrer =  $request->headers->get('referer')) {
+                if ($referrrer <> $request->getRequestUri()) {
+                    return $this->redirect($referrrer);
+                }
+            }
+            $entityManager->refresh($product);
+        }
+
         $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
             'product' => $product
         ]);
@@ -51,5 +66,19 @@ class ProductController extends AbstractController
             'categories' => $categoryRepository->findAll(),
             'addToCartForm' => $addToCartForm->createView()
         ]);
+    }
+
+    #[Route(path: '/buy_now/{id}', name: 'app_product_buy', methods: ['GET'])]
+    public function buyNowProduct(Request $request, Product $product, EntityManagerInterface $entityManager, CategoryRepository $categoryRepository): Response
+    {
+        $product->setStockQuantity($product->getStockQuantity()-1);
+        $entityManager->flush();
+        if ($referrrer =  $request->headers->get('referer')) {
+            if ($referrrer <> $request->getRequestUri()) {
+                return $this->redirect($referrrer);
+            }
+        }
+        return $this->redirectToRoute('project_show', ['id' => $product->getId()]);
+
     }
 }
