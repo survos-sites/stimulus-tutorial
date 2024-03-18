@@ -83,19 +83,19 @@ pwa:
         src: "sw.js"
         skip_waiting: true
         workbox:
-            page_caches:
-                - regex: '\/login|register\/.*$'
+            resource_caches:
+                - match_callback: 'regex: {(login|register)$}}'
                   cache_name: 'static-pages'
-                  strategy: 'cacheFirst'
+                  strategy: CacheFirst
                     #                  network_timeout: 2 # Wait only 2 seconds (only when strategy = networkFirst
-                  urls: # List of URLs to precache. The URL shall be comprised within the regex
+                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
                       - 'app_login'
                       - 'app_register'
-                - regex: '\/product|category\/.*$'
+                - match_callback: 'startsWith: /product|category/'
                   cache_name: 'products_and_categories'
-                  strategy: 'staleWhileRevalidate'
+                  strategy: StaleWhileRevalidate
                   broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
-                  urls: # List of URLs to precache. The URL shall be comprised within the regex
+                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
 #                      - 'app_articles'
 #                    - 'app_about'
 #            offline_fallback:

@@ -26,7 +26,7 @@ class Product
     #[Groups('product:read')]
     private $description;
 
-    #[ORM\Column(type: 'string', length: 20)]
+    #[ORM\Column(type: 'string', length: 120)]
     #[Assert\NotBlank]
     private $brand = 'Low End Luxury';
 
@@ -54,6 +54,9 @@ class Product
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
     private $imageFilename = 'floppy-disc.png';
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $isFeatured = null;
 
     public function __construct()
     {
@@ -192,7 +195,10 @@ class Product
 
     public function setImageFilename(string $imageFilename): self
     {
-        $this->imageFilename = $imageFilename;
+//        if (!str_starts_with($imageFilename, 'http')) {
+//            $imageFilename = '/uploads/products/' . $imageFilename;
+//        }
+        $this->imageFilename = $imageFilename; // featured products are stored in /assets and always available
 
         return $this;
     }
@@ -200,6 +206,18 @@ class Product
     #[Groups('product:read')]
     public function getImageUrl(): string
     {
-        return sprintf('/uploads/products/'.$this->imageFilename);
+        return $this->imageFilename; // really the url
+    }
+
+    public function isIsFeatured(): ?bool
+    {
+        return $this->isFeatured;
+    }
+
+    public function setIsFeatured(?bool $isFeatured): static
+    {
+        $this->isFeatured = $isFeatured;
+
+        return $this;
     }
 }

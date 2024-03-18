@@ -51,10 +51,10 @@ class CartController extends AbstractController
         $addToCartForm->handleRequest($request);
         if ($addToCartForm->isSubmitted() && $addToCartForm->isValid()) {
             $cart = $cartStorage->getOrCreateCart();
-            $cart->addItem($addToCartForm->getData());
+            $cartItem = $cart->addItem($addToCartForm->getData());
             $cartStorage->save($cart);
 
-            $this->addFlash('success', 'Item added!');
+            $this->addFlash('success', sprintf('(%d) %s now in cart.', $cartItem->getQuantity(), $product->getName()));
 
             return $this->redirectToRoute('app_product', [
                 'id' => $product->getId(),

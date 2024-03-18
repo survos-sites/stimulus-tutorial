@@ -39,11 +39,13 @@ class CartStorage
         $newCart = new Cart();
         // refresh the Products from the database
         foreach ($cart->getItems() as $item) {
-            $newCart->addItem(new CartItem(
-                $this->productRepository->find($item->getProduct()),
-                $item->getQuantity(),
-                $item->getColor() ? $this->colorRepository->find($item->getColor()) : null
-            ));
+            if ($product = $this->productRepository->find($item->getProduct())) {
+                $newCart->addItem(new CartItem(
+                    $product,
+                    $item->getQuantity(),
+                    $item->getColor() ? $this->colorRepository->find($item->getColor()) : null
+                ));
+            }
         }
 
         return $newCart;

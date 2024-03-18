@@ -21,6 +21,29 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+
+        $data = json_decode(file_get_contents(__DIR__ . '/./dummycategories.json'), false);
+        foreach ($data as $catgorySlug) {
+            $category = (new Category())
+                ->setName($catgorySlug);
+            $manager->persist($category);
+            $categories[$catgorySlug] = $category;
+        }
+        $data = json_decode(file_get_contents(__DIR__ . '/./dummyproducts.json'), false);
+        foreach ($data->products as $p) {
+            $product = (new Product())
+                ->setName($p->title)
+                ->setDescription($p->description)
+                ->setBrand($p->brand)
+                ->setStockQuantity($p->stock)
+                ->setCategory($categories[$p->category])
+                ->setPrice((int)$p->price*100)
+                ->setImageFilename($p->thumbnail) // HACK! download images to assets?  Or create
+                ;
+            $manager->persist($product);
+
+        }
+
         $colorRed = new Color('red', 'ff0000');
         $colorGreen = new Color('green', '00ff00');
         $colorBlue = new Color('blue', '0000ff');
@@ -57,6 +80,7 @@ class AppFixtures extends Fixture
 
         foreach (self::getProductsData() as $productData) {
             $product = new Product();
+            $product->setIsFeatured(true);
             $product->setName($productData['name']);
             $product->setDescription($productData['description']);
             $product->setCategory($categories[$productData['category']]);

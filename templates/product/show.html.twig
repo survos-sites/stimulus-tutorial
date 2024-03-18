@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+{% block title product.name ~ ' Details' %}
 {% block body %}
     <div class="container-fluid mt-4">
         <div class="row">
@@ -13,7 +14,10 @@
                     <div class="col-4 pt-3">
                         <img
                             alt="{{ product.name }}"
-                            src="{{ asset('/images/products/'~product.imageFilename) }}"
+{#                            src="{{ asset('/images/products/'~product.imageFilename) }}"#}
+                            src="{{ product.isFeatured
+                            ? asset('/images/products/'~product.imageFilename)
+                            : product.imageFilename }}"
                             class="d-block"
                         >
                         <div class="p-2">

@@ -11,6 +11,7 @@ for the [Symfony UX: Stimulus.js](https://symfonycasts.com/screencast/stimulus) 
 * PostgreSQL (not MySQL)
 * Click Me moved to the bottom of the page
 * @todo: drop jQuery
+* @todo: load products from dummyjson to get more pages
 
 
 ## Quick Install (using sqlite)
@@ -20,6 +21,9 @@ git clone git@github.com:survos-sites/stimulus-tutorial.git && cd stimulus-tutor
 echo "DATABASE_URL=sqlite:///%kernel.project_dir%/var/data.db" > .env.local
 composer install 
 bin/console doctrine:database:create && bin/console doctrine:schema:update --force --complete
+
+curl 'https://dummyjson.com/products?limit=100' > src/DataFixtures/dummyproducts.json
+curl 'https://dummyjson.com/products/categories?limit=100' > src/DataFixtures/dummycategories.json
 bin/console doctrine:fixtures:load -n
 symfony server:start -d
 symfony open:local

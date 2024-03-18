@@ -17,7 +17,7 @@ class Category implements \Stringable
     #[ORM\Column(type: 'string', length: 100)]
     private $name;
 
-    #[ORM\OneToMany(targetEntity: \App\Entity\Product::class, mappedBy: 'category')]
+    #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'category')]
     private $products;
 
     public function __construct()

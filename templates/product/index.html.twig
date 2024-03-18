@@ -49,12 +49,14 @@
                     {% for product in products %}
                         <div class="col-xs-12 col-6 mb-2 pb-2">
                             <div class="component-light">
-                                <div class="product-image">
+                                <div class="product-thumbnail">
                                     <a href="{{ path('app_product', { id: product.id }) }}">
                                         <img
                                             alt="{{ product.name }}"
-                                            src="{{ asset('/images/products/'~product.imageFilename) }}"
-                                            class="d-block mb-2"
+                                            src="{{ product.isFeatured
+                                            ? asset('/images/products/'~product.imageFilename)
+                                            : product.imageFilename }}"
+                                            class="product-thumbnail d-block mb-2"
                                         >
                                     </a>
                                     <h3 class="font-weight-bold mb-2 px-2">
