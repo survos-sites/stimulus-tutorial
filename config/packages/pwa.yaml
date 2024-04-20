@@ -84,7 +84,7 @@ pwa:
         skip_waiting: true
         workbox:
             resource_caches:
-                - match_callback: 'regex: {(login|register)$}}'
+                - match_callback: '(login|register)$'
                   cache_name: 'static-pages'
                   strategy: CacheFirst
                     #                  network_timeout: 2 # Wait only 2 seconds (only when strategy = networkFirst
