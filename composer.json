@@ -1,6 +1,9 @@
 {
     "type": "project",
     "license": "proprietary",
+    "name": "survos-sites/stimulus-tutorial",
+    "description": "code for https://symfonycasts.com/screencast/stimulus with some tweaks and PWA support",
+    "keywords": ["symfony","pwa","symfonycacsts","tutorial"],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
