@@ -19,7 +19,7 @@
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.26",
         "presta/sitemap-bundle": "^4.1",
-        "spomky-labs/pwa-bundle": "1.1.x",
+        "spomky-labs/pwa-bundle": "1.2.x-dev",
         "survos/command-bundle": "^1.5",
         "survos/pwa-extra-bundle": "^1.5",
         "symfony/asset": "7.0.*",

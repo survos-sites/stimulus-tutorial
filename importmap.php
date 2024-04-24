@@ -47,4 +47,7 @@ return [
     'sweetalert2' => [
         'version' => '11.10.6',
     ],
+    'stimulus-reactive' => [
+        'version' => '1.0.0',
+    ],
 ];
