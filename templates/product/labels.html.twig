@@ -35,17 +35,20 @@
     {% set perRow = app.request.get('perRow', 3) %}
     {% set width = app.request.get('width')|default(3) %}
     {% set map = {
-        2: 'col-2',
+        2: 'col-6',
         3: 'col-4',
         4: 'col-3',
-        6: 'col-6'
+        6: 'col-2'
     } %}
+    {% set col = map[perRow] %}
         <div class="row">
             {% for product in products %}
-                <div class="{{ map[width] }} m-3">
+                {% set withinRowIndex = loop.index % perRow %}
+                <div class="{{ col }} ">
                     <div class="card w-{{ width }}in">
                         <div class="card-header">
-                            {{ loop.index }} of {{ perRow }} ({{ (loop.index % perRow) }}
+                            {{ col }}
+                            {{ (loop.index % perRow) }} of {{ perRow }}
                             {{ product.name }}
                         </div>
                         <div class="card-body">
@@ -58,8 +61,9 @@
                         </div>
                     </div>
                 </div>
-                {% if (loop.index % perRow) == 0 %}
+                {% if withinRowIndex == 0 %}
                     </div><!-- end of row -->
+                    <hr />
                     <div class="row">
                 {% endif %}
             {% endfor %}
