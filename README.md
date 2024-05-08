@@ -20,13 +20,20 @@ for the [Symfony UX: Stimulus.js](https://symfonycasts.com/screencast/stimulus) 
 git clone git@github.com:survos-sites/stimulus-tutorial.git && cd stimulus-tutorial 
 echo "DATABASE_URL=sqlite:///%kernel.project_dir%/var/data.db" > .env.local
 composer install 
+symfony check:req
 bin/console doctrine:database:create && bin/console doctrine:schema:update --force --complete
-
-curl 'https://dummyjson.com/products?limit=100' > src/DataFixtures/dummyproducts.json
-curl 'https://dummyjson.com/products/categories?limit=100' > src/DataFixtures/dummycategories.json
 bin/console doctrine:fixtures:load -n
 symfony server:start -d
 symfony open:local
+```
+
+## Notes
+
+The data fixtures come from
+
+```bash
+curl 'https://dummyjson.com/products?limit=100' > src/DataFixtures/dummyproducts.json
+curl 'https://dummyjson.com/products/categories?limit=100' > src/DataFixtures/dummycategories.json
 ```
 
 

@@ -30,15 +30,22 @@
 {% endblock %}
 
 {% block header '' %}
-{% block body_wrapper_class '' %}
+{#{% block body_wrapper_class '' %}#}
 {% block body %}
-    <div id="qrcode"></div>
-    <div class="container">
+    {% set perRow = app.request.get('perRow', 3) %}
+    {% set width = app.request.get('width')|default(3) %}
+    {% set map = {
+        2: 'col-2',
+        3: 'col-4',
+        4: 'col-3',
+        6: 'col-6'
+    } %}
         <div class="row">
             {% for product in products %}
-                <div class="col-4 w-{{ app.request.get('width')|default(3) }}in">
-                    <div class="card">
+                <div class="{{ map[width] }} m-3">
+                    <div class="card w-{{ width }}in">
                         <div class="card-header">
+                            {{ loop.index }} of {{ perRow }} ({{ (loop.index % perRow) }}
                             {{ product.name }}
                         </div>
                         <div class="card-body">
@@ -51,8 +58,10 @@
                         </div>
                     </div>
                 </div>
+                {% if (loop.index % perRow) == 0 %}
+                    </div><!-- end of row -->
+                    <div class="row">
+                {% endif %}
             {% endfor %}
-
         </div>
-    </div>
 {% endblock %}

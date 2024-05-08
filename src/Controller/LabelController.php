@@ -13,7 +13,7 @@ class LabelController extends AbstractController
     public function index(ProductRepository $productRepository): Response
     {
         return $this->render('product/labels.html.twig', [
-            'products' => $productRepository->findBy([], limit: 5)
+            'products' => $productRepository->findBy([], limit: 12)
         ]);
     }
 }
