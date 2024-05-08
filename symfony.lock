@@ -55,6 +55,18 @@
     "presta/sitemap-bundle": {
         "version": "v4.1.0"
     },
+    "sentry/sentry-symfony": {
+        "version": "5.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "5.0",
+            "ref": "76afa07d23e76f678942f00af5a6a417ba0816d0"
+        },
+        "files": [
+            "config/packages/sentry.yaml"
+        ]
+    },
     "spomky-labs/pwa-bundle": {
         "version": "1.1.x-dev"
     },
