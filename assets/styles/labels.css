@@ -1,5 +1,20 @@
+.w-2in {
+    width: 2in;
+}
+
+.w-3in {
+    width: 3in;
+}
+
 .w-4in {
     width: 4in;
-    border-color: red;
-    border-top: red;
+}
+
+.w-64in {
+    width: 6in;
+}
+
+.qr-60 {
+    width: 160px;
+    height: 160px;
 }

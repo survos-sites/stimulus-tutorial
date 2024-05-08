@@ -84,32 +84,32 @@ pwa:
         skip_waiting: true
         workbox:
             resource_caches:
-                - match_callback: '(login|register)$'
-                  cache_name: 'static-pages'
-                  strategy: CacheFirst
-                    #                  network_timeout: 2 # Wait only 2 seconds (only when strategy = networkFirst
-                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
-                      - 'app_login'
-                      - 'app_register'
-                - match_callback: 'startsWith: /category'
-                  cache_name: 'categories'
-                  strategy: CacheFirst
-                  broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
-                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
-                    - /category/1
-                    - /category/2
-                    - /category/3
-                - match_callback: 'startsWith: /product'
-                  cache_name: 'products'
-                  strategy: StaleWhileRevalidate
-                  broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
-                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
-
-                - match_callback: 'regex: {^/products|categories/}'
-                  cache_name: 'products_and_categories'
-                  strategy: StaleWhileRevalidate
-                  broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
-                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
+#                - match_callback: '(login|register)$'
+#                  cache_name: 'static-pages'
+#                  strategy: CacheFirst
+#                    #                  network_timeout: 2 # Wait only 2 seconds (only when strategy = networkFirst
+#                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
+#                      - 'app_login'
+#                      - 'app_register'
+#                - match_callback: 'startsWith: /category'
+#                  cache_name: 'categories'
+#                  strategy: CacheFirst
+#                  broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
+#                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
+#                    - /category/1
+#                    - /category/2
+#                    - /category/3
+#                - match_callback: 'startsWith: /product'
+#                  cache_name: 'products'
+#                  strategy: StaleWhileRevalidate
+#                  broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
+#                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
+#
+#                - match_callback: 'regex: {^/products|categories/}'
+#                  cache_name: 'products_and_categories'
+#                  strategy: StaleWhileRevalidate
+#                  broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
+#                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
 #                      - 'app_articles'
 #                    - 'app_about'
 #            offline_fallback:

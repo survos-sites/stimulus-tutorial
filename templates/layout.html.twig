@@ -9,7 +9,7 @@
 
         <meta
                 name="Description"
-                content="A simple white noise app that plays in the background."
+                content="Based on the SymfonyCast Stimulus Tutorial"
         />
 
         <title>{% block title %}MVP Office Supplies{% endblock %}</title>
@@ -20,8 +20,9 @@
         {% endblock %}
     </head>
     <body>
+        {% block header %}
         <div class="page-top">
-            <header class="header">
+            <header class="header d-print-none">
                 <nav class="navbar navbar-expand-lg navbar-dark justify-content-between">
                     <a class="navbar-brand" href="/">
                         <img src="{{ asset('images/mvp-logo-light.png' ) }}"
@@ -69,6 +70,11 @@
                             </li>
                         {% endif %}
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_label') }}">
+                                labels
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_cart') }}">
                                 Shopping Cart ({{ count_cart_items() }})
                             </a>
@@ -94,14 +100,18 @@
             {% endfor %}
         </div>
 
-        <div class="container-fluid">
+        {% endblock header %}
+
+        <div class="{% block body_wrapper_class 'container-fluid' %} ">
             {% block body %}{% endblock %}
         </div>
 
+        {% block footer %}
         <div
             class="footer mb-0"
             {{ stimulus_controller('made-with-love') }}
         >
         </div>
+    {% endblock %}
     </body>
 </html>
