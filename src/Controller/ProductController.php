@@ -90,7 +90,7 @@ class ProductController extends AbstractController
                 return $this->redirect($referrrer);
             }
         }
-        return $this->redirectToRoute('project_show', ['id' => $product->getId()]);
+        return $this->redirectToRoute('product_admin_show', ['id' => $product->getId()]);
 
     }
 }
