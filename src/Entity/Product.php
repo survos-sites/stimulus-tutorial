@@ -18,12 +18,12 @@ class Product
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups('product:read')]
+    #[Groups(['product:read','searchable'])]
     #[Assert\NotBlank]
     private $name;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    #[Groups('product:read')]
+    #[Groups(['product:read','searchable'])]
     private $description;
 
     #[ORM\Column(type: 'string', length: 120)]

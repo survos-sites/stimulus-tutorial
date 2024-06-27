@@ -7,11 +7,11 @@ for the [Symfony UX: Stimulus.js](https://symfonycasts.com/screencast/stimulus) 
 
 * Update all libraries: Symfony 7, latest Bootstrap, etc.
 * Replace WebpackEncore with AssetMapper
+* Replace doctrine search with Meilisearch 
 * Drop React (not compatible with AssetMapper)
-* PostgreSQL (not MySQL)
+* PostgreSQL (instead of MySQL)
 * Click Me moved to the bottom of the page
 * @todo: drop jQuery
-* @todo: load products from dummyjson to get more pages
 
 
 ## Quick Install (using sqlite)
@@ -132,3 +132,8 @@ And as always, thanks so much for your support and letting
 us do what we love!
 
 <3 Your friends at SymfonyCasts
+
+## Dev
+
+composer config repositories.meili '{"type": "vcs", "url": "git@github.com:tacman/meilisearch-symfony.git"}'
+composer config repositories.meili '{"type": "path", "url": "/home/tac/g/tacman/meilisearch-symfony"}'
