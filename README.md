@@ -23,8 +23,9 @@ composer install
 symfony check:req
 bin/console doctrine:database:create && bin/console doctrine:schema:update --force --complete
 bin/console doctrine:fixtures:load -n
+bin/console meilisearch:import -v
 symfony server:start -d
-symfony open:local
+symfony open:local --path=/?q=door
 ```
 
 ## Notes
