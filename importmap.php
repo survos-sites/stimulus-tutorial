@@ -50,4 +50,7 @@ return [
     'stimulus-reactive' => [
         'version' => '1.0.0',
     ],
+    'chart.js' => [
+        'version' => '3.9.1',
+    ],
 ];
