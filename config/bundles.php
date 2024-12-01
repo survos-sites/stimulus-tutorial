@@ -24,4 +24,5 @@ return [
     Survos\CommandBundle\SurvosCommandBundle::class => ['all' => true],
     Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
     Meilisearch\Bundle\MeilisearchBundle::class => ['all' => true],
+    Schranz\Search\Integration\Symfony\SearchBundle::class => ['all' => true],
 ];

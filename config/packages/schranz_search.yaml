@@ -1,0 +1,14 @@
+schranz_search:
+    schemas:
+        default:
+            dir: '%kernel.project_dir%/config/schemas'
+    engines:
+        default:
+            adapter: '%env(SEAL_DSN)%'
+#        index_name_prefix: [asts_] # for stimulus_tutorial_schranz_
+when@test:
+    schranz_search:
+        engines:
+            default:
+                adapter: 'memory://'
+        index_name_prefix: test_
