@@ -34,7 +34,7 @@ class CartController extends AbstractController
     }
 
     #[Route(path: '/cart/_list', name: '_app_cart_list')]
-    public function _shoppingCartList(CartStorage $cartStorage)
+    public function _shoppingCartList(CartStorage $cartStorage): Response
     {
         return $this->render('cart/_cartList.html.twig', [
             'cart' => $cartStorage->getOrCreateCart(),
@@ -42,7 +42,7 @@ class CartController extends AbstractController
     }
 
     #[Route(path: '/product/{id}', name: 'app_cart_add_item', methods: ['POST'])]
-    public function addItemToCart(Product $product, Request $request, CategoryRepository $categoryRepository, CartStorage $cartStorage)
+    public function addItemToCart(Product $product, Request $request, CategoryRepository $categoryRepository, CartStorage $cartStorage): Response
     {
         $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
             'product' => $product
@@ -69,7 +69,7 @@ class CartController extends AbstractController
     }
 
     #[Route(path: '/cart/remove/{productId}/{colorId?}', name: 'app_cart_remove_item', methods: ['POST'])]
-    public function removeItemToCart($productId, $colorId, Request $request, CartStorage $cartStorage, ProductRepository $productRepository, ColorRepository $colorRepository)
+    public function removeItemToCart($productId, $colorId, Request $request, CartStorage $cartStorage, ProductRepository $productRepository, ColorRepository $colorRepository): Response
     {
         /** @var Product|null $product */
         $product = $productRepository->find($productId);
