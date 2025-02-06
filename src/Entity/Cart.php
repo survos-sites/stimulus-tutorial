@@ -46,7 +46,7 @@ class Cart
 
     public function getTotal(): int
     {
-        return array_reduce($this->getItems(), fn($accumulator, CartItem $item) => $accumulator + $item->getTotal(), 0);
+        return array_reduce($this->getItems(), fn($accumulator, CartItem $item): float|int => $accumulator + $item->getTotal(), 0);
     }
 
     public function getTotalString(): string
@@ -56,7 +56,7 @@ class Cart
 
     public function countTotalItems(): int
     {
-        return array_reduce($this->getItems(), fn($accumulator, CartItem $item) => $accumulator + $item->getQuantity(), 0);
+        return array_reduce($this->getItems(), fn($accumulator, CartItem $item): float|int => $accumulator + $item->getQuantity(), 0);
     }
 
     public function findItem(Product $product, ?Color $color): ?CartItem

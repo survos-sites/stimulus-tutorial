@@ -15,8 +15,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class ProductAdminController extends AbstractController
 {
     public function __construct(
-        private EntityManagerInterface $entityManager,
-        private ProductRepository $productRepository)
+        private readonly EntityManagerInterface $entityManager,
+        private readonly ProductRepository $productRepository)
     {
 
     }

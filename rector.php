@@ -16,6 +16,7 @@ return RectorConfig::configure()
     ->withPhpVersion(Rector\ValueObject\PhpVersion::PHP_84)
     ->withRules([
         Rector\Php84\Rector\Param\ExplicitNullableParamTypeRector::class,
+        \Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictTypedPropertyRector::class,
     ])
     ->withPhpSets(php84: true)
     ->withTypeCoverageLevel(10)

@@ -196,7 +196,7 @@ class Purchase
 
     public function getTotal(): int
     {
-        return array_reduce($this->purchaseItems->toArray(), fn($accumulator, PurchaseItem $item) => $accumulator + $item->getTotal(), 0);
+        return array_reduce($this->purchaseItems->toArray(), fn($accumulator, PurchaseItem $item): int|float => $accumulator + $item->getTotal(), 0);
     }
 
     public function getTotalString(): string
