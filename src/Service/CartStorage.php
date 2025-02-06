@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class CartStorage
 {
     public function __construct(
-                                private RequestStack $requestStack,
+                                private readonly RequestStack $requestStack,
                                 private readonly ProductRepository $productRepository, private readonly ColorRepository $colorRepository)
     {
     }

@@ -39,7 +39,7 @@ class CheckoutController extends AbstractController
             $session->set('purchase_id', $purchase->getId());
             $cartStorage->clearCart();
 
-            return $this->redirectToRoute('app_confirmation');
+            return $this->redirectToRoute('app_confirmation', ['purchaseId' => $purchase->getId()]);
         }
 
         return $this->render('checkout/checkout.html.twig', [
@@ -49,10 +49,9 @@ class CheckoutController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/confirmation', name: 'app_confirmation')]
-    public function confirmation(SessionInterface $session, PurchaseRepository $purchaseRepository): Response
+    #[Route(path: '/confirmation/{purchaseId}', name: 'app_confirmation')]
+    public function confirmation(int $purchaseId, PurchaseRepository $purchaseRepository): Response
     {
-        $purchaseId = $session->get('purchase_id');
         $purchase = $purchaseRepository->find($purchaseId);
 
         if (!$purchase) {

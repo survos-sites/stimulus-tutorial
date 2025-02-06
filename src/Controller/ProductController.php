@@ -24,7 +24,7 @@ class ProductController extends AbstractController
     public function index(Request $request, CategoryRepository $categoryRepository,
                           SearchService $searchService,
                           EntityManagerInterface $entityManager,
-                          ProductRepository $productRepository, Category $category = null): Response
+                          ProductRepository $productRepository, ?Category $category = null): Response
     {
         $searchTerm = $request->query->get('q');
         if ($searchTerm) {

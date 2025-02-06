@@ -12,6 +12,7 @@ class SerializeExtension extends AbstractExtension
     {
     }
 
+    #[\Override]
     public function getFilters()
     {
         return [

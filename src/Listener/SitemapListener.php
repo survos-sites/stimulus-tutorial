@@ -21,7 +21,7 @@ use Symfony\Component\Routing\RouterInterface;
 class SitemapListener implements EventSubscriberInterface
 {
 
-    public function __construct(private EntityManagerInterface $doctrine, private UrlGeneratorInterface $router)
+    public function __construct(private readonly EntityManagerInterface $doctrine, private readonly UrlGeneratorInterface $router)
     {
     }
 
@@ -78,7 +78,7 @@ class SitemapListener implements EventSubscriberInterface
             }
 
             if ($post->getVideo() !== null) {
-                parse_str(parse_url($post->getVideo(), PHP_URL_QUERY), $parameters);
+                parse_str(parse_url((string) $post->getVideo(), PHP_URL_QUERY), $parameters);
                 $url = new GoogleVideoUrlDecorator($url);
                 $url->addVideo(
                     $video = new GoogleVideo(

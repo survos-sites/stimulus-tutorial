@@ -16,6 +16,7 @@ class CartExtension extends AbstractExtension
     {
     }
 
+    #[\Override]
     public function getFunctions()
     {
         return [

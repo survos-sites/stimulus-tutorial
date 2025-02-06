@@ -25,3 +25,7 @@
 ###< symfony/asset-mapper ###
 
 drivers
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###

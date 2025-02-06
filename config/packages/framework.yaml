@@ -5,6 +5,10 @@ framework:
 
     # Note that the session will be started ONLY if you read or write from it.
     session: true
+    router:
+        #        default_uri: 'https://barcode-demo.survos.com/'
+        default_uri: 'https://stimulus-tutorial.wip/'
+
 
     #esi: true
     #fragments: true
