@@ -47,17 +47,17 @@ class Color
         return $this;
     }
 
-    public function getRed(): string
+    public function getRed(): float|int
     {
         return hexdec(substr($this->hexColor, 0, 2));
     }
 
-    public function getGreen(): string
+    public function getGreen(): float|int
     {
         return hexdec(substr($this->hexColor, 2, 2));
     }
 
-    public function getBlue(): string
+    public function getBlue(): float|int
     {
         return hexdec(substr($this->hexColor, 4, 2));
     }
