@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,13 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route(path: '/admin/product')]
 class ProductAdminController extends AbstractController
 {
+    public function __construct(
+        private EntityManagerInterface $entityManager,
+        private ProductRepository $productRepository)
+    {
+
+    }
+
     #[Route(path: '/', name: 'product_admin_index', methods: ['GET'])]
     public function index(ProductRepository $productRepository, Request $request): Response
     {
@@ -31,7 +39,7 @@ class ProductAdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->entityManager;
             $entityManager->persist($product);
             $entityManager->flush();
 
@@ -68,7 +76,7 @@ class ProductAdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('product_admin_index');
         }
@@ -83,7 +91,7 @@ class ProductAdminController extends AbstractController
     public function delete(Request $request, Product $product): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->entityManager;
             $entityManager->remove($product);
             $entityManager->flush();
         }

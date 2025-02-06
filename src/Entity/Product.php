@@ -123,7 +123,7 @@ class Product
 
     public function getPriceString(): string
     {
-        return (string) $this->price / 100;
+        return (string) ($this->price / 100);
     }
 
     public function setPrice(int $price): self

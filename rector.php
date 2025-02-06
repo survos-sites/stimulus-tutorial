@@ -18,6 +18,6 @@ return RectorConfig::configure()
         Rector\Php84\Rector\Param\ExplicitNullableParamTypeRector::class,
     ])
     ->withPhpSets(php84: true)
-    ->withTypeCoverageLevel(0)
+    ->withTypeCoverageLevel(10)
     ->withDeadCodeLevel(0)
     ->withCodeQualityLevel(0);

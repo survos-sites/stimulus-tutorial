@@ -3,6 +3,7 @@
 namespace App\Listener;
 
 use App\Entity\Category;
+use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
 use Presta\SitemapBundle\Service\UrlContainerInterface;
@@ -59,38 +60,38 @@ class SitemapListener implements EventSubscriberInterface
 
     private function registerBlogPosts(UrlContainerInterface $urlContainer): void
     {
-        $posts = $this->doctrine->getRepository(BlogPost::class)->findAll();
+        $posts = $this->doctrine->getRepository(Product::class)->findAll();
 
-        /** @var BlogPost $post */
-        foreach ($posts as $post) {
+        /** @var Product $product */
+        foreach ($posts as $product) {
             $url = $this->url(
-                'blog',
-                ['slug' => $post->getSlug()]
+                'product_show',
+                ['id' => $product->getId()]
             );
 
-            if (count($post->getImages()) > 0) {
-                $url = new GoogleImageUrlDecorator($url);
-                foreach ($post->getImages() as $idx => $image) {
-                    $url->addImage(
-                        new GoogleImage($image, sprintf('%s - %d', $post->getTitle(), $idx + 1))
-                    );
-                }
-            }
+//            if (count($product->getImages()) > 0) {
+//                $url = new GoogleImageUrlDecorator($url);
+//                foreach ($product->getImages() as $idx => $image) {
+//                    $url->addImage(
+//                        new GoogleImage($image, sprintf('%s - %d', $product->getTitle(), $idx + 1))
+//                    );
+//                }
+//            }
+//
+//            if ($product->getVideo() !== null) {
+//                parse_str(parse_url((string) $product->getVideo(), PHP_URL_QUERY), $parameters);
+//                $url = new GoogleVideoUrlDecorator($url);
+//                $url->addVideo(
+//                    $video = new GoogleVideo(
+//                        sprintf('https://img.youtube.com/vi/%s/0.jpg', $parameters['v']),
+//                        $product->getTitle(),
+//                        $product->getTitle(),
+//                        ['content_location' => $product->getVideo()]
+//                    )
+//                );
+//            }
 
-            if ($post->getVideo() !== null) {
-                parse_str(parse_url((string) $post->getVideo(), PHP_URL_QUERY), $parameters);
-                $url = new GoogleVideoUrlDecorator($url);
-                $url->addVideo(
-                    $video = new GoogleVideo(
-                        sprintf('https://img.youtube.com/vi/%s/0.jpg', $parameters['v']),
-                        $post->getTitle(),
-                        $post->getTitle(),
-                        ['content_location' => $post->getVideo()]
-                    )
-                );
-            }
-
-            $urlContainer->addUrl($url, 'blog');
+            $urlContainer->addUrl($url, 'products');
         }
     }
 

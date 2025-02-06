@@ -23,6 +23,7 @@ class AppFixtures extends Fixture
     {
 
         $data = json_decode(file_get_contents(__DIR__ . '/./dummycategories.json'), false);
+        $categories = [];
         foreach ($data as $catgorySlug) {
             $category = (new Category())
                 ->setName($catgorySlug);
