@@ -17,7 +17,15 @@
                 "enabled": true,
                 "fetch": "eager"
             },
+            "device-motion": {
+                "enabled": true,
+                "fetch": "eager"
+            },
             "device-orientation": {
+                "enabled": true,
+                "fetch": "eager"
+            },
+            "file-handling": {
                 "enabled": true,
                 "fetch": "eager"
             },
@@ -33,7 +41,15 @@
                 "enabled": true,
                 "fetch": "eager"
             },
+            "network-information": {
+                "enabled": true,
+                "fetch": "eager"
+            },
             "prefetch-on-demand": {
+                "enabled": true,
+                "fetch": "eager"
+            },
+            "picture-in-picture": {
                 "enabled": true,
                 "fetch": "eager"
             },
@@ -49,11 +65,27 @@
                 "enabled": true,
                 "fetch": "eager"
             },
+            "capture": {
+                "enabled": true,
+                "fetch": "eager"
+            },
+            "speech-synthesis": {
+                "enabled": true,
+                "fetch": "eager"
+            },
             "sync-broadcast": {
                 "enabled": true,
                 "fetch": "eager"
             },
+            "touch": {
+                "enabled": true,
+                "fetch": "eager"
+            },
             "vibration": {
+                "enabled": true,
+                "fetch": "eager"
+            },
+            "wake-lock": {
                 "enabled": true,
                 "fetch": "eager"
             }
