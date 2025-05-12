@@ -1,0 +1,9 @@
+survos_crawler:
+# if you've run symfony proxy:domain:attach my-project, then the error messages will be displayed with this prefix.  That way, you can simply click on a link to open the page.
+    base_url: 'https://stimulus-tutorial.wip/'
+    user_class: App\Entity\User
+    users:
+#        - user@user.com
+    max_depth : 1
+    routes_to_ignore :
+        - 'app_logout'

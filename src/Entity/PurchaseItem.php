@@ -9,22 +9,22 @@ class PurchaseItem
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
+    private ?int $id = null;
 
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(targetEntity: \App\Entity\Purchase::class, inversedBy: 'purchaseItems')]
-    private $purchase;
+    private ?\App\Entity\Purchase $purchase = null;
 
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
-    private $product;
+    private ?\App\Entity\Product $product = null;
 
     #[ORM\ManyToOne(targetEntity: \App\Entity\Color::class)]
-    private $color;
+    private ?\App\Entity\Color $color = null;
 
-    #[ORM\Column(type: 'integer')]
-    private $quantity;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
+    private ?int $quantity = null;
 
     public function getId(): ?int
     {

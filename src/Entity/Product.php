@@ -13,47 +13,50 @@ class Product
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
     #[Groups('product:read')]
-    private $id;
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
     #[Groups(['product:read','searchable'])]
     #[Assert\NotBlank]
-    private $name;
+    private ?string $name = null;
 
-    #[ORM\Column(type: 'text', nullable: true)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::TEXT, nullable: true)]
     #[Groups(['product:read','searchable'])]
-    private $description;
+    private ?string $description = null;
 
-    #[ORM\Column(type: 'string', length: 120)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 120)]
     #[Assert\NotBlank]
-    private $brand = 'Low End Luxury';
+    private string $brand = 'Low End Luxury';
 
-    #[ORM\Column(type: 'float', nullable: true)]
-    private $weight;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::FLOAT, nullable: true)]
+    private ?float $weight = null;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
     #[Groups('product:read')]
     #[Assert\GreaterThan(0)]
     #[Assert\NotBlank]
-    private $price;
+    private ?int $price = null;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
     #[Assert\GreaterThanOrEqual(0)]
-    private $stockQuantity = 0;
+    private ?int $stockQuantity = 0;
 
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(targetEntity: \App\Entity\Category::class, inversedBy: 'products')]
     #[Assert\NotBlank]
-    private $category;
+    private ?\App\Entity\Category $category = null;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection<int, \App\Entity\Color>
+     */
     #[ORM\ManyToMany(targetEntity: \App\Entity\Color::class)]
-    private $colors;
+    private \Doctrine\Common\Collections\Collection $colors;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
     #[Assert\NotBlank]
-    private $imageFilename = 'floppy-disc.png';
+    private ?string $imageFilename = 'floppy-disc.png';
 
     #[ORM\Column(nullable: true)]
     private ?bool $isFeatured = null;

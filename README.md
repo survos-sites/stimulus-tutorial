@@ -37,6 +37,12 @@ curl 'https://dummyjson.com/products?limit=100' > src/DataFixtures/dummyproducts
 curl 'https://dummyjson.com/products/categories?limit=100' > src/DataFixtures/dummycategories.json
 ```
 
+## Database
+
+![Database Diagram](assets/docs/database.svg)
+
+
+
 
 ## Setup
 

@@ -12,42 +12,45 @@ class Purchase
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
     #[Assert\NotBlank(message: 'Please, enter your full name!')]
-    private $customerName;
+    private ?string $customerName = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
     #[Assert\NotBlank(message: 'Please, enter your email address!')]
     #[Assert\Email(message: 'Please, enter a valid email!')]
-    private $customerEmail;
+    private ?string $customerEmail = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
     #[Assert\NotBlank(message: 'Please, enter your street address!')]
-    private $customerAddress;
+    private ?string $customerAddress = null;
 
-    #[ORM\Column(type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 20, nullable: true)]
     #[Assert\NotBlank(message: 'Please, enter your ZIP code!')]
-    private $customerZip;
+    private ?string $customerZip = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
     #[Assert\NotBlank(message: 'Please, enter your City!')]
-    private $customerCity;
+    private ?string $customerCity = null;
 
-    #[ORM\Column(type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 20, nullable: true)]
     #[Assert\NotBlank(message: 'Please, provide a phone number!')]
-    private $customerPhone;
+    private ?string $customerPhone = null;
 
-    #[ORM\Column(type: 'boolean')]
-    private $isShipped = false;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::BOOLEAN)]
+    private ?bool $isShipped = false;
 
-    #[ORM\Column(type: 'datetime')]
-    private $createdAt;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $createdAt = null;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection<int, \App\Entity\PurchaseItem>
+     */
     #[ORM\OneToMany(targetEntity: \App\Entity\PurchaseItem::class, mappedBy: 'purchase', orphanRemoval: true, cascade: ['persist'])]
-    private $purchaseItems;
+    private \Doctrine\Common\Collections\Collection $purchaseItems;
 
     public function __construct()
     {

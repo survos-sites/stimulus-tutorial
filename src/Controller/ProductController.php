@@ -21,22 +21,26 @@ class ProductController extends AbstractController
 {
     #[Route(path: '/', name: 'app_homepage')]
     #[Route(path: '/category/{id}', name: 'app_category')]
-    public function index(Request $request, CategoryRepository $categoryRepository,
-                          SearchService $searchService,
+    public function index(Request $request,
+                          CategoryRepository $categoryRepository,
                           EntityManagerInterface $entityManager,
-                          ProductRepository $productRepository, ?Category $category = null): Response
+                          ProductRepository $productRepository,
+//                          ?SearchService $searchService=null,
+                          ?Category $category = null
+    ): Response
     {
         $searchTerm = $request->query->get('q');
-        if ($searchTerm) {
-            // @todo: set category as a facet and include it here.
-            $products = $searchService->search($entityManager, Product::class, $searchTerm);
-        } else {
+        // testing with MeiliSearchBundle, but not worthwhile enough
+//        if ($searchTerm && $searchService) {
+//            // @todo: set category as a facet and include it here.
+//            $products = $searchService->search($entityManager, Product::class, $searchTerm);
+//        } else {
             // with doctrine
             $products = $productRepository->search(
                 $category,
                 $searchTerm
             );
-        }
+//        }
 
         if ($request->query->get('preview')) {
             return $this->render('product/_searchPreview.html.twig', [

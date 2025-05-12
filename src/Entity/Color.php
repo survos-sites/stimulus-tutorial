@@ -9,11 +9,11 @@ class Color
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
+    private ?int $id = null;
 
-    public function __construct(#[ORM\Column(type: 'string', length: 100)]
-    private string $name, #[ORM\Column(type: 'string', length: 6)]
+    public function __construct(#[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 100)]
+    private string $name, #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 6)]
     private string $hexColor)
     {
     }

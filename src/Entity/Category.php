@@ -11,14 +11,17 @@ class Category implements \Stringable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 100)]
-    private $name;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 100)]
+    private ?string $name = null;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection<int, \App\Entity\Product>
+     */
     #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'category')]
-    private $products;
+    private \Doctrine\Common\Collections\Collection $products;
 
     public function __construct()
     {

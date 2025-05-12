@@ -23,7 +23,7 @@ return [
     Presta\SitemapBundle\PrestaSitemapBundle::class => ['all' => true],
     Survos\CommandBundle\SurvosCommandBundle::class => ['all' => true],
     Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
-    Meilisearch\Bundle\MeilisearchBundle::class => ['all' => true],
     Bizkit\VersioningBundle\BizkitVersioningBundle::class => ['all' => true],
-    Pierstoval\SmokeTesting\SmokeTestingBundle::class => ['dev' => true, 'test' => true],
+    Jawira\DoctrineDiagramBundle\DoctrineDiagramBundle::class => ['all' => true],
+    Survos\CrawlerBundle\SurvosCrawlerBundle::class => ['all' => true],
 ];
