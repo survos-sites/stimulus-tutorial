@@ -21,11 +21,16 @@ git clone git@github.com:survos-sites/stimulus-tutorial.git && cd stimulus-tutor
 echo "DATABASE_URL=sqlite:///%kernel.project_dir%/var/data.db" > .env.local
 composer install 
 symfony check:req
-bin/console doctrine:database:create && bin/console doctrine:schema:update --force --complete
+bin/console doctrine:database:create && bin/console doctrine:schema:update --force
 bin/console doctrine:fixtures:load -n
-bin/console meilisearch:import -v
 symfony server:start -d
-symfony open:local --path=/?q=door
+symfony open:local 
+```
+
+## Tests
+
+```bash
+vendor/bin/phpunit
 ```
 
 ## Notes
