@@ -53,4 +53,7 @@ return [
     'chart.js' => [
         'version' => '3.9.1',
     ],
+    'idb' => [
+        'version' => '8.0.3',
+    ],
 ];

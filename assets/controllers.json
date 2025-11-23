@@ -1,6 +1,10 @@
 {
     "controllers": {
         "@spomky-labs/pwa-bundle": {
+            "background-fetch": {
+                "enabled": false,
+                "fetch": "eager"
+            },
             "backgroundsync-form": {
                 "enabled": true,
                 "fetch": "eager"
@@ -9,12 +13,20 @@
                 "enabled": true,
                 "fetch": "eager"
             },
+            "barcode-detection": {
+                "enabled": false,
+                "fetch": "eager"
+            },
             "battery": {
                 "enabled": true,
                 "fetch": "eager"
             },
             "connection-status": {
                 "enabled": true,
+                "fetch": "eager"
+            },
+            "contact": {
+                "enabled": false,
                 "fetch": "eager"
             },
             "device-motion": {
@@ -73,10 +85,6 @@
                 "enabled": true,
                 "fetch": "eager"
             },
-            "sync-broadcast": {
-                "enabled": true,
-                "fetch": "eager"
-            },
             "touch": {
                 "enabled": true,
                 "fetch": "eager"
@@ -87,6 +95,10 @@
             },
             "wake-lock": {
                 "enabled": true,
+                "fetch": "eager"
+            },
+            "web-push": {
+                "enabled": false,
                 "fetch": "eager"
             }
         },
