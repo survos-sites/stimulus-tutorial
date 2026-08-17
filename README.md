@@ -1,3 +1,14 @@
+> [!IMPORTANT]
+> **The hosted version of this project is no longer running.**
+>
+> The Dokku app **`stimulus-tutorial`** (`stimulus-tutorial.survos.com`) was retired on
+> 2026-08-17 as part of consolidating every database onto a single PostgreSQL 18 cluster. Its
+> web process is scaled to zero and its `stimulus_tutorial` database has been dropped, so the
+> URL no longer serves the app.
+>
+> The code in this repository is unchanged and still runs locally — the Quick Install steps
+> below work as written.
+
 # Stimulus Tutorial (updated)
 
 ### Symfony UX: Stimulus.js 
